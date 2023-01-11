@@ -26,5 +26,10 @@ public class Main {
         //Linkedlist in Java is doubly linked list. where the element has references to both the previous and next element
 
         System.out.println(namesLinkedList.get(0));
+        //arraylist gets the element in constant time. i.e. takes the same time for 2nd elem or the 500th elem
+        //for ll it traverses thru all the elems.
+        //LL better in adding/removing
+
+
     }
 }
