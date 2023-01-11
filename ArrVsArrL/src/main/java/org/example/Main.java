@@ -27,6 +27,13 @@ public class Main {
         System.out.println(indianDishes.length+ " "+indianDishesInAL.size());
 
         indianDishesInAL.add("Mango Lassi");
+        indianDishesInAL.set(0, "Paneer Butter Masala");
+        System.out.println(indianDishesInAL);
+        indianDishesInAL.remove(2);
 
+        System.out.println(indianDishes);
+        System.out.println(indianDishesInAL);
+
+        indianDishesInAL.forEach((elem) -> System.out.println(elem));
     }
 }
