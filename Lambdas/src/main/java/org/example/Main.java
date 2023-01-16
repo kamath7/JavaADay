@@ -7,6 +7,12 @@ public class Main {
 
         printFromInter(karadi);
 
+        printFromInter(() ->{
+            System.out.println("Awoooh from a wolf!");
+        });
+
+        printFromInter(() ->System.out.println("Rnaaah from an elephant"));
+
     }
 
     static void printFromInter(Printable thing){
