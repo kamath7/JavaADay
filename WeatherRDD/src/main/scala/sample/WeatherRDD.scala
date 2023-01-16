@@ -4,6 +4,12 @@ import org.apache.log4j._
 import org.apache.spark._
 
 object WeatherRDD {
+  /*
+  Data is in this format
+
+  StationID,Year,EitherTMAXorTMIN,Temperature
+  9129192,18000911,TMAX,24
+   */
 
   def parseLines(line: String): (String, String, Float)= {
 
@@ -19,6 +25,16 @@ object WeatherRDD {
 
     val sc = new SparkContext("local[*]","WeatherRDD")
 
-    val lines = sc.textFile("")
+    val lines = sc.textFile("D:\\Code\\Scala\\SparkAndScala\\Datasets\\1800.csv")
+
+    val parsedLines = lines.map(parseLines)
+
+    val minTemps = parsedLines.filter(x => x._2 == "TMIN") //check the second value in the tuple is a min
+    val maxTemps = parsedLines.filter(x => x._2 == "TMAX") //check the second value if max
+
+    val stationTemps = minTemps.map(x => (x._1, x._3))
+    val stationTemps1 = maxTemps.map(x => (x._1, x._3))
+
+
   }
 }
