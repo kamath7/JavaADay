@@ -1,5 +1,6 @@
 package sample
 
+import breeze.linalg.{max, min}
 import org.apache.log4j._
 import org.apache.spark._
 
@@ -20,6 +21,8 @@ object WeatherRDD {
     (stationID, entryType, temperature)
   }
 
+  def celsToFahr (fahrTemp: Double): Double = ((fahrTemp - 32) * 5 )/ 9
+
   def main(args: Array[String]) = {
     Logger.getLogger("org").setLevel(Level.ERROR)
 
@@ -36,5 +39,23 @@ object WeatherRDD {
     val stationTemps1 = maxTemps.map(x => (x._1, x._3))
 
 
+    val minTempsByStation = stationTemps.reduceByKey( (x,y) => min(x,y) )
+    val maxTempsByStations = stationTemps1.reduceByKey( (x,y) => max(x,y))
+
+    val results = minTempsByStation.collect()
+    for (result <- results.sorted){
+      val station = result._1
+      val temp = result._2
+
+      println(s"${station} -> ${celsToFahr(temp)}")
+    }
+
+    val results1 = maxTempsByStations.collect()
+    for (result <- results1.sorted){
+      val station = result._1
+      val temp = result._2
+
+      println(s"${station} -> ${celsToFahr(temp)}")
+    }
   }
 }
