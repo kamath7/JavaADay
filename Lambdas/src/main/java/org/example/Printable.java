@@ -1,6 +1,7 @@
 package org.example;
 
+@FunctionalInterface
 public interface Printable {
-
-    void print();
+//FuncInterface -> Exactly one method
+    void print(String s);
 }
