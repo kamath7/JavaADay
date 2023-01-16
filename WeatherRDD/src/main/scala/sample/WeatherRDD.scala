@@ -1,6 +1,5 @@
 package sample
 
-import breeze.linalg.{max, min}
 import org.apache.log4j._
 import org.apache.spark._
 
@@ -39,8 +38,8 @@ object WeatherRDD {
     val stationTemps1 = maxTemps.map(x => (x._1, x._3))
 
 
-    val minTempsByStation = stationTemps.reduceByKey( (x,y) => min(x,y) )
-    val maxTempsByStations = stationTemps1.reduceByKey( (x,y) => max(x,y))
+    val minTempsByStation = stationTemps.reduceByKey( (x,y) => math.min(x,y) )
+    val maxTempsByStations = stationTemps1.reduceByKey( (x,y) => math.max(x,y))
 
     val results = minTempsByStation.collect()
     for (result <- results.sorted){
