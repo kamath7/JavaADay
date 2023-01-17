@@ -17,7 +17,11 @@ public class Main {
 
 
         System.out.println(comparatorLambda.compare("Kamath","Kamath"));
+        Comparator<String> comparatorBetterLambda = ( s1,  s2) ->  s1.compareTo(s2);
+        System.out.println(comparatorBetterLambda.compare("Kamath","Kamath"));
 
+        SimpleInter simpleInter = ()-> System.out.println("Printing from Functional Interface");
+        simpleInter.apply();
 
     }
 }
