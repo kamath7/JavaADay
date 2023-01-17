@@ -11,6 +11,13 @@ public class Main {
                 return s1.compareTo(s2);
             }
         };
-        System.out.println(comparator.compare("Kamath","Adithya"));
+        System.out.println(comparator.compare("Kamath","Kamath"));
+
+        Comparator<String> comparatorLambda = (String s1, String s2) -> {return s1.compareTo(s2);}; //equivalent to the one above
+
+
+        System.out.println(comparatorLambda.compare("Kamath","Kamath"));
+
+
     }
 }
