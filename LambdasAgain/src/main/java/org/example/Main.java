@@ -20,8 +20,10 @@ public class Main {
         Comparator<String> comparatorBetterLambda = ( s1,  s2) ->  s1.compareTo(s2);
         System.out.println(comparatorBetterLambda.compare("Kamath","Kamath"));
 
-        SimpleInter simpleInter = ( text,  text2)-> System.out.println("Printing from Functional Interface. "+text+" "+text2);
-        simpleInter.apply("Hello","World");
+        SimpleInter simpleInter = ( text,  text2)-> "Printing from Functional Interface. "+text+" "+text2;
+        System.out.println(simpleInter.apply("Hello","World"));
 
+        SimpleInter simpleInter1 = simpleInter;
+        System.out.println((simpleInter1.apply("Hello","Kams")));
     }
 }
