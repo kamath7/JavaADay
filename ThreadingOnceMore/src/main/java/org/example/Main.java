@@ -24,7 +24,14 @@ public class Main {
                 System.out.println("Runnable from Anon Class");
             }
         };
-
         runnable.run();
+
+        Runnable runnable1 = () -> {
+            System.out.println("Lambda running");
+            System.out.println("Lambda finished");
+        };
+
+        Thread thread = new Thread(runnable1);
+        thread.start();
     }
 }
