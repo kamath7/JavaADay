@@ -14,5 +14,8 @@ public class Main {
 
         MyThread myThread = new MyThread();
         myThread.run();
+
+        RunnableThread runnableThread = new RunnableThread();
+        runnableThread.run();
     }
 }
