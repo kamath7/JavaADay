@@ -17,5 +17,14 @@ public class Main {
 
         RunnableThread runnableThread = new RunnableThread();
         runnableThread.run();
+
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("Runnable from Anon Class");
+            }
+        };
+
+        runnable.run();
     }
 }
