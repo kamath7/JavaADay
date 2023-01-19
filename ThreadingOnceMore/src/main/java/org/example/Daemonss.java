@@ -19,6 +19,7 @@ public class Daemonss {
         Thread thread = new Thread (runnable);
         thread.setDaemon(true);
         thread.start();
-        sleep(3100);
+
+        thread.join();
     }
 }
