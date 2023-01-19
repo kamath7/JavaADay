@@ -56,5 +56,20 @@ public class Main {
 
         Thread thread3 = new Thread(runnable3, "NiceThread");
         thread3.start();
+
+        StoppableRunn stoppableRunn = new StoppableRunn();
+        Thread thread4 = new Thread(stoppableRunn, "Threaddd");
+        thread4.start();
+
+        try{
+            Thread.sleep(4000);
+        }catch(InterruptedException e){
+            e.printStackTrace();
+        }
+
+        System.out.println("Requesting stop");
+        stoppableRunn.requestStop();
+        System.out.println("Thread stopped!");
+
     }
 }
