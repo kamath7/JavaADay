@@ -33,5 +33,28 @@ public class Main {
 
         Thread thread = new Thread(runnable1);
         thread.start();
+
+        Runnable runnable2 = () -> {
+            String threadName = Thread.currentThread().getName();
+            System.out.println("Lambda finished from "+threadName);
+        };
+
+        Thread thread1 = new Thread(runnable2, "ThreadYOLO");
+        thread1.start();
+
+        Runnable runnable3 = () -> {
+            String threadName = Thread.currentThread().getName();
+
+            try {
+                Thread.sleep(3);
+            } catch (InterruptedException e){
+                e.printStackTrace();
+            }
+
+            System.out.println("Thread finished!");
+        };
+
+        Thread thread3 = new Thread(runnable3, "NiceThread");
+        thread3.start();
     }
 }
